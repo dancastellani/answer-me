@@ -18,7 +18,7 @@ class ProvasControllerTest < ActionController::TestCase
 
   test "should create prova" do
     assert_difference('Prova.count') do
-      post :create, prova: { descricao: @prova.descricao }
+      post :create, prova: { descricao: @prova.descricao, nome: @prova.nome }
     end
 
     assert_redirected_to prova_path(assigns(:prova))
@@ -35,7 +35,7 @@ class ProvasControllerTest < ActionController::TestCase
   end
 
   test "should update prova" do
-    put :update, id: @prova, prova: { descricao: @prova.descricao }
+    put :update, id: @prova, prova: { descricao: @prova.descricao, nome: @prova.nome }
     assert_redirected_to prova_path(assigns(:prova))
   end
 
