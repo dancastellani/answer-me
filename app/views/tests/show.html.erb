@@ -11,5 +11,21 @@
 </p>
 
 
+<p>
+    <table>
+      <b>Questions:</b>
+      <tr>
+        <th>Description</th>
+      </tr>
+      <% @test.questions.each do |question| %>
+        <tr>
+          <td><%= question.description %></td>
+        </tr>
+      <% end %>
+    </table>
+<%= link_to 'New Question', new_test_question_path(@test) %>
+</p>
+
+
 <%= link_to 'Edit', edit_test_path(@test) %> |
 <%= link_to 'Back', tests_path %>

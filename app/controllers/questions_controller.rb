@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+
   # GET /questions
   # GET /questions.json
   def index
@@ -6,29 +7,37 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @questions }
+      format.json { render json: [@test,@question] }
     end
+  end
+
+  @test
+  before_filter :get_test
+  def get_test
+    @test = Test.find(params[:test_id])
   end
 
   # GET /questions/1
   # GET /questions/1.json
   def show
-    @question = Question.find(params[:id])
+    @question = @test.questions.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html  # show.html.erb
       format.json { render json: @question }
     end
   end
 
+
   # GET /questions/new
   # GET /questions/new.json
   def new
-    @question = Question.new
+
+    @question = @test.questions.new(params[:question])
 
     respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @question }
+      format.html { [@test,@question] }
+      format.json { render json: [@test,@question] }
     end
   end
 
@@ -40,12 +49,15 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(params[:question])
+    @question = @test.questions.new(params[:question])
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render json: @question, status: :created, location: @question }
+        format.html { redirect_to [@test,@question],
+                                    notice: 'Question was successfully created.' }
+        format.json { render json: [@test,@question],
+                                    status: :created,
+                                    location: [@test,@question] }
       else
         format.html { render action: "new" }
         format.json { render json: @question.errors, status: :unprocessable_entity }
