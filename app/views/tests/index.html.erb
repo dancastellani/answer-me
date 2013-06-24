@@ -4,6 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
+    <th>Questions</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,9 @@
   <tr>
     <td><%= test.name %></td>
     <td><%= test.description %></td>
+    <%= test.questions.each do |question| %>
+        <td><%=question.description=%></td>
+    <% end %>
     <td><%= link_to 'Show', test %></td>
     <td><%= link_to 'Edit', edit_test_path(test) %></td>
     <td><%= link_to 'Destroy', test, method: :delete, data: { confirm: 'Are you sure?' } %></td>
