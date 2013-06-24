@@ -1,0 +1,23 @@
+<h1>Listing provas</h1>
+
+<table>
+  <tr>
+    <th>Descricao</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @provas.each do |prova| %>
+  <tr>
+    <td><%= prova.descricao %></td>
+    <td><%= link_to 'Show', prova %></td>
+    <td><%= link_to 'Edit', edit_prova_path(prova) %></td>
+    <td><%= link_to 'Destroy', prova, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Prova', new_prova_path %>
