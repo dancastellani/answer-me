@@ -1,8 +1,8 @@
 AnswerMe::Application.routes.draw do
-  resources :pergunta
+  resources :questions
 
 
-  resources :provas
+  resources :tests
 
 
   # The priority is based upon order of creation:
